@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Button } from './Button';
 
-const Form = (props) => {
+export const Form = (props) => {
   const [lastName, setLastName] = useState(props.lastName)
   const [firstName, setFirstName] = useState(props.firstName)
   
@@ -16,10 +17,8 @@ const Form = (props) => {
   return (
       <div className="app">
         <div className="app-props">Here is outside props about user: {firstName} {lastName}</div>
-        <button className="delete-btn" onClick={() => setFirstName('John')}>Change</button>
+        <Button btnClass="delete-btn" onAction={() => setFirstName('John')} name="Change"/>
         <button className="delete-btn" onClick={() => setFirstName('Asset')}>Return</button>
       </div>
   );
 }
-
-export default Form;

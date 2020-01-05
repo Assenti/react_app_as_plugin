@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Form from './Form';
+import { Form } from './components/Form';
 
 const App = (props) => {
     const urlParams = new URLSearchParams(window.location.search);
