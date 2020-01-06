@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Form } from './components/Form';
 
-const App = (props) => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
-    console.log(id)
-    return (
-        <div className="app">
-            <h1>This Embedded React app</h1>
-            <Form id={id}/>
-        </div>
-    )
+class App extends Component {
+
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            uId: new URLSearchParams(window.location.search).get('id') || ''
+        }
+        window.__PLUGIN__ = this
+    }
+    
+    setId(_id) {
+        this.setState({ uId: _id })
+    }
+
+    render() {
+        return (
+            <div className="app">
+                <h1>This Embedded React app</h1>
+                <Form id={this.state.uId}/>
+            </div>
+        )
+    }
 }
 
 ReactDOM.render(<App/>, document.getElementById('plugin'));
